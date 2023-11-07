@@ -1,3 +1,53 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+:root{
+    --yellow: #D3A726;
+    --dark-grey: #221E1F;
+    --green: #00A44D;
+}
+
+header{
+    width: 100%;
+    position: fixed;
+    background: #fff;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    
+}
+nav{
+    width: 85%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+} 
+main{
+    padding-top: 90px;
+    width: 90%; margin: 0 auto;
+}
+
+.nav-logo{
+    font-size: 35px;
+    color: var(--green);
+    font-weight: 900;
+}
+.nav-logo span:first-child{
+    color: var(--dark-grey);
+}
+.nav-logo span:last-child{
+    color: var(--yellow);
+}
+
+.nav-links{
+    display: flex;
+    gap: 50px;
+}
+
+.button-green{
+    background-color: var(--green);
+    border-radius: 5px;
+}
