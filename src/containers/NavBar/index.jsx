@@ -6,10 +6,14 @@ import Logo from "../../components/Logo"
 
 const NavBar = () =>{
     return(
-        <nav className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-            <Logo />
-            <NavLinks/>
-        </nav>
+        <div>
+            <div className="top-bar">lest</div>
+            <nav className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+                <Logo />
+                <NavLinks/>
+            </nav>
+        </div>
+        
     )
 }
 

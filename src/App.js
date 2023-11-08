@@ -4,27 +4,33 @@ import {
   Route,
   Routes
 } from 'react-router-dom';
-import Home from './pages/Home';
-import NavBar from './containers/NavBar';
-import About from './pages/About';
-import Login from './pages/Login';
-import Contacts from './pages/Contacts';
+import Home from './pages/master/Home';
+import About from './pages/master/About';
+import Login from './pages/master/Login';
+import Contacts from './pages/master/Contacts';
+import MasterLayout from './containers/MasterLayout';
+import DashboardLayout from './containers/DashboardLayout';
+import Dashboard from './pages/dashboard/Dashboard';
+import Projects from './pages/dashboard/Projects';
 
 function App() {
   return (
   <BrowserRouter>
-  <header className=''>
-    <NavBar />
-  </header>
-    <main>
       <Routes>
-        <Route index element={<Home />}/>
-        <Route path="about" element={<About/>}/>
-        <Route path="contact" element={<Contacts/>}/>
-        <Route path="more" element={<About/>}/>
-        <Route path="login" element={<Login/>}/>
+        <Route path="/" element={<MasterLayout/>}>
+          <Route path="/" element={<Home/>}/>
+          <Route path="about" element={<About/>}/>
+          <Route path="contact" element={<Contacts/>}/>
+          <Route path="more" element={<About/>}/>
+          <Route path="login" element={<Login/>}/>
+        </Route>
+        <Route path="/admin/" element={<DashboardLayout/>}>
+          <Route path="/admin/" element={<Dashboard/>}/>
+          <Route path="projects" element={<Projects/>}/>
+        </Route>
+        
       </Routes>
-    </main>
+  
   </BrowserRouter>
   );
 }
