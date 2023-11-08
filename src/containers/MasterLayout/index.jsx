@@ -5,7 +5,7 @@ import { Outlet } from "react-router-dom";
 const MasterLayout = () =>{
     return (
         <div>
-            <header className=''>
+            <header className='shadow-sm'>
                 <NavBar />
             </header>
             <main>
