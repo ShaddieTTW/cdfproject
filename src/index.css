@@ -7,19 +7,26 @@
     --dark-grey: #221E1F;
     --green: #00A44D;
 }
-
+body{
+    background-color: #f9f9f9;
+}
 header{
     width: 100%;
     position: fixed;
-    background: #fff;
+    background: #fefefe;
     height: 80px;
+    top: 0;
     display: flex;
     align-items: center;
     
 }
+.all-width{
+    width: 100%;
+}
 nav{
     width: 85%;
     margin: auto;
+    top: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -30,12 +37,18 @@ main{
     width: 90%; margin: 0 auto;
 }
 
+.top-bar{
+    margin-top: 0;
+    padding: 10px;
+    background-color: white;
+}
+
 .nav-logo{
     font-size: 35px;
     color: var(--green);
     font-weight: 900;
 }
-.nav-logo span:first-child{
+.grey-color{
     color: var(--dark-grey);
 }
 .nav-logo span:last-child{
@@ -47,11 +60,24 @@ main{
     gap: 50px;
 }
 
+.bt-10{
+    padding: 10px 50px;
+}
+
 .button-green{
     background-color: var(--green);
     border-radius: 5px;
 }
-
+.icon-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    border-radius: 50%;
+    height: 40px;
+    border: 1px solid #efefef;
+    background-color: #fefefe;
+}
 aside{
     position: fixed;
     height: 100vh;
@@ -60,7 +86,10 @@ aside{
     background-color: var(--dark-grey);
     color:white;
 }
-
+.max-hight{
+    max-height: 70vh;
+    overflow-y: auto;
+}
 
 .dash-logo{
     height: 70px;
@@ -72,12 +101,17 @@ aside{
     top:0;
     left: 280px;
     width: calc(100% - 280px);
-    background-color: #f0f0f0;
+    background-color: #ffff;
     height: 70px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 .dash-main{
     padding-top: 80px;
     margin-left: 300px;
+   
 }
 
 .dash-links{
@@ -109,15 +143,28 @@ aside{
     display: flex;
     justify-content: space-between;
 }
-.dash-main-top h2{
-    font-size: 18px;
-    font-weight: 600px;
-}
+
 .dash-bandcramp{
     font-weight: 600;
 }
 .dash-bandcramp span{
     color: var(--green);
+}
+
+
+.mas-login{
+    display: flex;
+    width: 100%;
+    height: 70vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.mas-form{
+    width: 500px;
+    padding: 30px;
+    border: 1px solid #eee;
+    background-color: #fff;
 }
 
 

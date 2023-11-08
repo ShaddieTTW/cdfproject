@@ -5,7 +5,7 @@ const Projects = () =>{
     return(
         <>
             <div class="dash-main-top">
-                <h2>Projects</h2>
+                <h2 className="text-2xl font-bold">Projects</h2>
                 <div  className="dash-bandcramp">
                     <NavLink to="/admin/">Dashboard</NavLink> / <span>Projects</span>
                 </div>

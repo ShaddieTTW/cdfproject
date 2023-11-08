@@ -1,14 +1,14 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
-const Logo = () =>{
+const Logo = (props) =>{
     return(
-        <NavLink to="/">
+        <Link to={props.root}>
             <h1 className="nav-logo">
-                <span>C</span>D<span>F</span>
+                <span className={props.theme}>C</span>D<span>F</span>
             </h1>
-        </NavLink>
+        </Link>
     )
 }
 
