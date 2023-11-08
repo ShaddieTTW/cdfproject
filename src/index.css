@@ -104,6 +104,23 @@ aside{
     transition: .2s ease;
 }
 
+.dash-main-top{
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.dash-main-top h2{
+    font-size: 18px;
+    font-weight: 600px;
+}
+.dash-bandcramp{
+    font-weight: 600;
+}
+.dash-bandcramp span{
+    color: var(--green);
+}
+
+
 .link:hover{
     opacity: .6;
 }
