@@ -3,7 +3,15 @@ import React from "react";
 const Dashboard = () =>{
     return (
         <>
-        <h1>Dashboard</h1>
+            <div class="dash-main-top">
+                <h2>Dashboard</h2>  
+                <div className="dash-bandcramp">
+                    <span>Dashboard</span>
+                </div>  
+            </div>
+            <div className="dash-main-content">
+                
+            </div>
         </>
     )
 }

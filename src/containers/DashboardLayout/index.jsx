@@ -1,6 +1,7 @@
 import React from "react";
 import Logo from "../../components/Logo";
 import { NavLink, Outlet } from "react-router-dom";
+import { BsGridFill,BsDashSquareFill } from "react-icons/bs";
 
 const DashboardLayout = () =>{
     return (
@@ -17,14 +18,12 @@ const DashboardLayout = () =>{
                     <div className="shadow rounded links">
                         <NavLink  to="/admin/"  className="link shadow rounded">
                             <span>Dashboard</span>
-                            <span>icon</span>
+                            <BsGridFill/>
                         </NavLink>
                         <NavLink to="/admin/projects" className="link shadow rounded">
                             <span>Projects</span>
-                            <span>icon</span>
+                            <BsDashSquareFill/>
                         </NavLink>
-
-
                     </div>
                 </div>
             </aside>
