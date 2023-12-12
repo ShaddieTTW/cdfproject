@@ -8,6 +8,7 @@ import Select from '../../../components/Select';
 import SharpButton from '../../../components/SharpButton';
 import FormField from '../../../components/FormField';
 import FormSelect from '../../../components/FormSelect';
+import axios from 'axios';
 
 //const url ="http://localhost/lmetracker/core/data/equipments.php";
 const url ="http://41.63.9.43:7002/primarydata/api/all";
@@ -29,15 +30,12 @@ function Register() {
     const fetchData = async () => {
       try {
         // Make an API call using the fetch function
-        const response = await fetch(url);
+        const response = await axios.get(url);
         // Check if the request was successful (status code 200-299)
-        if (!response.ok) {
+        if (response.status !== 200) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
-        // Parse the JSON response
-        const result = await response.json();
-        // Update the state with the fetched data
-        setAllData(result);
+        setAllData(response.data);
       } catch (error) {
         // Handle errors
         setError(error.message);
@@ -57,14 +55,14 @@ function Register() {
   var initialData = {
     id:0,text:"Select"
   }
-  console.log(allData)
+
   const pdata =  allData.map((i)=>({
-    id:i.provinceid,
+    id:i.provinceId,
     text:i.pname
   }))
   pdata.push(initialData)
   pdata.sort((a, b) => a.id - b.id);
-  
+
   const handleProvince = () =>{
     const pid = document.getElementById(PROVINCE_DROPDOWN_ID).value;
 
@@ -77,6 +75,7 @@ function Register() {
       }))
       ddata.push(initialData)
       ddata.sort((a, b) => a.id - b.id);
+      console.log(ddata)
       setDistrictData(ddata)
     }else{
       setDistrictData([])
@@ -126,9 +125,17 @@ function Register() {
           </div>
           <div className="w-1/2">
             <FormField label="Phone Number" id="txtphonenumber" styles="w-full" />
-            <FormSelect label="Province" data={pdata} styles="w-full" onchange={handleProvince} id="ddlprovince"/>
-            <FormSelect label="District" data={districtData} id="ddldistrict"  styles="w-full" onchange={handleDistrict}/>
-            <FormSelect label="Constituence" data={constituenceData} id="ddlconstituency" styles="w-full"/>
+            <FormSelect label="Province" data={pdata} styles="w-full"  />
+
+            <Label text="Province" />
+            <Select options={pdata} id="ddlprovince" styles="w-full" onchange={handleProvince}/>
+
+            <Label text="District" />
+            <Select options={districtData}  styles="w-full" onchange={handleDistrict}/>
+
+            <Label text="Constituency" />
+            <Select options={constituenceData} id='ddlconstituency' styles="w-full" />
+           
             <FormField label="Password" id="txtpassword" type="password" styles="w-full"/>
             <FormField label="Confirm Password" id="txtconfirmpassword" type="password" styles="w-full"/>
 
