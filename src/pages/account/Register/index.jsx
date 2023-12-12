@@ -12,6 +12,7 @@ import axios from 'axios';
 
 //const url ="http://localhost/lmetracker/core/data/equipments.php";
 const url ="http://41.63.9.43:7002/primarydata/api/all";
+const posturl ="http://41.63.9.43:7002/primarydata/users/register";
 
 
 
@@ -110,6 +111,46 @@ function Register() {
     
   }
 
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+   
+
+    // Extract form data
+    const formData = {
+      email: document.getElementById('txtemail').value,
+      firstName: document.getElementById('txtfirstname').value,
+      lastName: document.getElementById('txtlastname').value,
+      otherNames: document.getElementById('txtothername').value,
+      nrcNumber: document.getElementById('txtnrc1').value+"/"+document.getElementById('txtnrc2').value+"/"+document.getElementById('txtnrc1').value,
+      phoneNumber: document.getElementById('txtphonenumber').value,
+      constituencyId: document.getElementById('ddlconstituency').value,
+      dob: document.getElementById('txtdob').value,
+      password: document.getElementById('txtpassword').value,
+      //confirm: document.getElementById('txtconfirmpassword').value,
+      userType: "CITIZEN",
+      
+    };
+    if(document.getElementById('txtpassword').value != document.getElementById('txtconfirmpassword').value){
+      alert("Passwords Dont Match")
+    }else if(document.getElementById('txtpassword').value.length < 8){
+      alert("Password Must Be atleast 8 Characters")
+    }
+    else{
+      try {
+        // Make a POST request using Axios
+        const response = await axios.post(posturl, formData);
+  
+        // Handle the response as needed (e.g., show a success message)
+        console.log(response.data);
+      } catch (error) {
+        // Handle errors (e.g., display an error message)
+        console.error('Error submitting form:', error.message);
+        alert(error.message)
+      }
+    }
+    
+  };
   return (
     loading ? <>Loading</>:
     <div className="mas-login">
@@ -137,7 +178,7 @@ function Register() {
           </div>
         </div>
         <div className="grid justify-items-end" >
-          <SharpButton text="Save" styles="w-28 text-center uppercase p-2 rounded-sm" />
+          <SharpButton onclick={handleSubmit} text="Save" styles="w-28 text-center uppercase p-2 rounded-sm" />
         </div>
       </div>
     </div>
