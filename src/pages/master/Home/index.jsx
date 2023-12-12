@@ -1,7 +1,20 @@
-import { React } from 'react';
+import { React} from 'react';
 import hero from "./hero/newhero.jpg";
+import jwt from 'jsonwebtoken';
 
 const Home = () => {
+  const secretKey = 'your-secret-key';
+  const token = localStorage.getItem('authToken');
+  
+  try {
+    // Verify and decode the JWT
+    const decoded = jwt.verify(token, secretKey, { algorithms: ['HS512'] });
+
+    // Access the decoded payload
+    console.log('Decoded Payload:', decoded);
+  } catch (error) {
+    console.error('JWT Verification Failed:', error.message);
+  }
   return (
     <>
     <div className='img-hero'>

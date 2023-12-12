@@ -14,7 +14,7 @@ function FormField(props) {
     :
     <div>
        <Label text={props.label}/>
-       <TextBox type={props.type} onkeyup={props.onkeyup} id={props.id} styles={props.styles}/>
+       <TextBox onchange={props.onchange} type={props.type} onkeyup={props.onkeyup} id={props.id} styles={props.styles}/>
     </div>
   );
 }

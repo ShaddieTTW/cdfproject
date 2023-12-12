@@ -1,25 +1,18 @@
 import React,{useState,useEffect} from 'react';
-import { Link } from 'react-router-dom';
 import Logo from '../../../components/Logo';
-import Label from '../../../components/Label';
-import TextBox from '../../../components/TextBox';
-import NRCTextBox from '../../../components/NRCTextBox';
-import Select from '../../../components/Select';
 import SharpButton from '../../../components/SharpButton';
 import FormField from '../../../components/FormField';
 import FormSelect from '../../../components/FormSelect';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
-//const url ="http://localhost/lmetracker/core/data/equipments.php";
 const url ="http://41.63.9.43:7002/primarydata/api/all";
 const posturl ="http://41.63.9.43:7002/primarydata/users/register";
-
-
 
 function Register() {
   const [districtData, setDistrictData] = useState([]);
   const [constituenceData, setConstituenceData] = useState([]);
-  //const [provinceData,setProvinceData] = useState('');
+
   const [allData, setAllData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -118,22 +111,24 @@ function Register() {
 
     // Extract form data
     const formData = {
-      email: document.getElementById('txtemail').value,
-      firstName: document.getElementById('txtfirstname').value,
+      firstName:document.getElementById('txtfirstname').value,
       lastName: document.getElementById('txtlastname').value,
       otherNames: document.getElementById('txtothername').value,
-      nrcNumber: document.getElementById('txtnrc1').value+"/"+document.getElementById('txtnrc2').value+"/"+document.getElementById('txtnrc1').value,
       phoneNumber: document.getElementById('txtphonenumber').value,
-      constituencyId: document.getElementById('ddlconstituency').value,
       dob: document.getElementById('txtdob').value,
+      email: document.getElementById('txtemail').value,
+      nrcNumber: document.getElementById('txtnrc1').value+"/"+document.getElementById('txtnrc2').value+"/"+document.getElementById('txtnrc3').value,
+      nrc: document.getElementById('txtnrc1').value+"/"+document.getElementById('txtnrc2').value+"/"+document.getElementById('txtnrc3').value,
+      userName: document.getElementById('txtphonenumber').value,
       password: document.getElementById('txtpassword').value,
-      //confirm: document.getElementById('txtconfirmpassword').value,
-      userType: "CITIZEN",
-      
+      constituencyId: parseInt(document.getElementById('ddlconstituency').value),
+      userType: "CITIZEN"
+  
+     
     };
     if(document.getElementById('txtpassword').value != document.getElementById('txtconfirmpassword').value){
       alert("Passwords Dont Match")
-    }else if(document.getElementById('txtpassword').value.length < 8){
+    }else if(document.getElementById('txtpassword').value.length < 2){
       alert("Password Must Be atleast 8 Characters")
     }
     else{
@@ -154,10 +149,11 @@ function Register() {
   return (
     loading ? <>Loading</>:
     <div className="mas-login">
-      <div className='mas-form'>
+      <div className='reg-form'>
         <div className="flex justify-center divide-inherit">
           <Logo theme="grey-color" root="/"/>
         </div>
+        <h2 className='text-3xl antialiased text-green-600 py-5'>User Registration</h2>
         <div className='flex gap-5 w-full'>
           <div className="w-1/2">
             <FormField label="Email Address" id="txtemail" styles="w-full"/>
@@ -177,8 +173,12 @@ function Register() {
 
           </div>
         </div>
-        <div className="grid justify-items-end" >
-          <SharpButton onclick={handleSubmit} text="Save" styles="w-28 text-center uppercase p-2 rounded-sm" />
+        <div className="grid " >
+          <SharpButton onclick={handleSubmit} text="Register" styles="w-52 text-center uppercase p-2 rounded-sm" />
+        </div>
+        <div className="flex justify-between items-center py-2 ">
+            <Link to="/" className='text-sky-600'>Login Instead</Link>
+ 
         </div>
       </div>
     </div>

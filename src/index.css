@@ -167,7 +167,12 @@ nav{
     padding: 3px 10px;
     font-size: 12px;
 }
-
+button{
+    border: none;
+    outline: none;
+    background: none;
+    display: block;
+}
 .bt-2{
     padding: 3px 5px;
 }
@@ -285,8 +290,15 @@ aside{
     background-color: #eee;
 }
 
-.mas-form{
+.reg-form{
     min-width: 900px;
+    padding: 30px;
+    border: 1px solid #eee;
+    background-color: #fff;
+}
+
+.log-form{
+    min-width: 500px;
     padding: 30px;
     border: 1px solid #eee;
     background-color: #fff;
