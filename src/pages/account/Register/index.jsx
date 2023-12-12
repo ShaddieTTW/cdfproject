@@ -66,20 +66,23 @@ function Register() {
   const handleProvince = () =>{
     const pid = document.getElementById(PROVINCE_DROPDOWN_ID).value;
 
-    var filteredList = allData.filter(obj => obj.provinceid == pid)
+    var filteredList = allData.filter(obj => obj.provinceId == pid)
+    console.log(filteredList,allData)
     if(filteredList.length > 0){
       filteredList = filteredList[0].districtList;
+   
       const ddata =  filteredList.map((i)=>({
         id:i.districtId,
         text:i.districtName
       }))
       ddata.push(initialData)
       ddata.sort((a, b) => a.id - b.id);
-      console.log(ddata)
+    
       setDistrictData(ddata)
     }else{
       setDistrictData([])
       setConstituenceData([])
+    
     }
     
   }
@@ -89,7 +92,7 @@ function Register() {
     const did = document.getElementById(DISTRICT_DROPDOWN_ID).value;
     const pid = document.getElementById(PROVINCE_DROPDOWN_ID).value;
     
-    const filteredDisList = allData.filter(obj => obj.provinceid == pid)[0].districtList
+    const filteredDisList = allData.filter(obj => obj.provinceId == pid)[0].districtList
 
     var filteredConstList = filteredDisList.filter(obj => obj.districtId == did)
     if(filteredConstList.length > 0){
@@ -125,17 +128,9 @@ function Register() {
           </div>
           <div className="w-1/2">
             <FormField label="Phone Number" id="txtphonenumber" styles="w-full" />
-            <FormSelect label="Province" data={pdata} styles="w-full"  />
-
-            <Label text="Province" />
-            <Select options={pdata} id="ddlprovince" styles="w-full" onchange={handleProvince}/>
-
-            <Label text="District" />
-            <Select options={districtData}  styles="w-full" onchange={handleDistrict}/>
-
-            <Label text="Constituency" />
-            <Select options={constituenceData} id='ddlconstituency' styles="w-full" />
-           
+            <FormSelect label="Province" data={pdata} styles="w-full" onchange={handleProvince} id="ddlprovince"/>
+            <FormSelect label="District" data={districtData} id="ddldistrict"  styles="w-full" onchange={handleDistrict}/>
+            <FormSelect label="Constituence" data={constituenceData} id="ddlconstituency" styles="w-full"/>
             <FormField label="Password" id="txtpassword" type="password" styles="w-full"/>
             <FormField label="Confirm Password" id="txtconfirmpassword" type="password" styles="w-full"/>
 
